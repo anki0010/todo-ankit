@@ -1,6 +1,5 @@
 
-
-const BACKEND_ROOT_URL = 'https://todo-backend-65ik.onrender.com/';
+const BACKEND_ROOT_URL = 'https://todo-backend-65ik.onrender.com';
 
 import { Todos } from './class/Todos.js';
 
@@ -8,6 +7,7 @@ const todos = new Todos(BACKEND_ROOT_URL);
 
 const list = document.querySelector('ul');
 const input = document.querySelector('input');
+const button = document.querySelector('button');
 
 input.disabled = true;
 
@@ -45,7 +45,6 @@ const renderLink = (li, id) => {
 }
 
 const getTasks = () => {
-    
     todos.getTasks().then((tasks) => {
         tasks.forEach(task => {
             renderTask(task);
@@ -54,10 +53,10 @@ const getTasks = () => {
         )
         input.disabled = false;
     }).catch((error) => {
-        console.error('Error:', error);
+        // console.error('Error:', error);
         alert('Error fetching tasks' + error);
     })
-        
+        // input.disabled = false;
 }
 
 const saveTask = async (task) => {
